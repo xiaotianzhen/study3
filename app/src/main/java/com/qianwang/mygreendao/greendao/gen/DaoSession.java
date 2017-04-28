@@ -16,8 +16,7 @@ import com.qianwang.mygreendao.greendao.gen.UserDao;
 
 /**
  * {@inheritDoc}
- * 管理制定模式下所有可用的DAO对象
- * 能对实体进行插入、加载、更新、刷新、删除操作。
+ * 
  * @see org.greenrobot.greendao.AbstractDaoSession
  */
 public class DaoSession extends AbstractDaoSession {

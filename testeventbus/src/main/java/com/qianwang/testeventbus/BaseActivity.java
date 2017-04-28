@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     @Subscribe
-    public void closeApp(String msg) {
+    public void onEventMainThread(String msg) {
 
         Log.i("520it", "" + "**********  执行eventbus方法  ****************");
         finish();
