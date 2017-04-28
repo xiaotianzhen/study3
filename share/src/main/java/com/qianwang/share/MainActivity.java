@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.umeng.socialize.ShareAction;
@@ -19,18 +20,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+    }
+
+
+    //需要一个触发，直接显示会失败
+    public void onDefault(View view) {
+        //间接分享
+        new ShareAction(MainActivity.this).withText("hello")
+                .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN_CIRCLE)
+                .setCallback(umShareListener).open();
+    }
+
+    public void onMyself(View view) {
         //直接分享
-      /*  new ShareAction(MainActivity.this).setPlatform(SHARE_MEDIA.SINA)
+        new ShareAction(MainActivity.this).setPlatform(SHARE_MEDIA.SINA)
                 .withText("hello")
                 .setCallback(umShareListener)
                 .share();
-     */
-
-        //间接分享
-        new ShareAction(MainActivity.this).withText("hello")
-                .setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.WEIXIN)
-                .setCallback(umShareListener).open();
-
     }
 
     private UMShareListener umShareListener = new UMShareListener() {

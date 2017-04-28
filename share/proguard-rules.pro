@@ -94,5 +94,17 @@
     public static final ** CREATOR;
     }
 
+
+
     -keep class com.linkedin.** { *; }
     -keepattributes Signature
+
+
+    -dontoptimize
+    -dontpreverify
+
+    -dontwarn cn.jpush.**
+    -keep class cn.jpush.** { *; }
+
+    -dontwarn cn.jiguang.**
+    -keep class cn.jiguang.** { *; }

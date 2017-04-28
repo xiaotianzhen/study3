@@ -12,6 +12,20 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY : "0eeafcaef33707fe103788ad", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+        ]
+
     }
     buildTypes {
 
@@ -39,6 +53,11 @@ android {
     }
 
 
+
+    sourceSets.main {
+        jniLibs.srcDirs = ['libs']  // <-- Set your folder here!
+    }
+
     dependencies {
         compile fileTree(include: ['*.jar'], dir: 'libs')
         androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -47,10 +66,17 @@ android {
         compile 'com.android.support:appcompat-v7:25.3.1'
         testCompile 'junit:junit:4.12'
         compile files('libs/SocialSDK_QQ_Simplify.jar')
+        compile 'cn.jiguang.sdk:jpush:3.0.5'  // 此处以JPush 3.0.5 版本为例。
+        compile 'cn.jiguang.sdk:jcore:1.1.2'  // 此处以JCore 1.1.2 版本为例。
 
     }
+
+
 }
 
 dependencies {
     compile files('libs/umeng_shareboard_widget.jar')
+    compile 'cn.jiguang.sdk:jpush:3.0.5'  // 此处以JPush 3.0.5 版本为例。
+    compile 'cn.jiguang.sdk:jcore:1.1.2'  // 此处以JCore 1.1.2 版本为例。
+
 }

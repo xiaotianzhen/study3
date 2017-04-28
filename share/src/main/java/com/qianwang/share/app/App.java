@@ -6,6 +6,8 @@ import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by sky on 2017/4/27.
  */
@@ -21,6 +23,11 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        //友盟分享
         UMShareAPI.get(this);
+
+        //极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 }
